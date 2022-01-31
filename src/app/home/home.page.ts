@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
+  public value: string;
   constructor() {}
+
+  changed(val: string) {
+    console.log(val);
+  }
 
 }

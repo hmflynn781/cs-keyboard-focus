@@ -1,0 +1,2 @@
+# Sample App
+This sample app has an `ion-input` placed at the bottom of the page and allows you to test that the on-screen keyboard on a native device pushes the ion-input control in the visible area when typing in it.
