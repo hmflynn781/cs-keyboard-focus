@@ -1,0 +1,38 @@
+<ion-header [ngClass]="{ 'ion-no-border': actionOption?.tabs }">
+  <ion-toolbar mode="md" [ngClass]="isAndroid ? 'android-offset' : ''">
+    <img
+      *ngIf="actionOption.displayLogo"
+      class="headerimg"
+      alt="voya-financial-login-logo"
+      src="../../../../assets/icon/myVoyageNew.svg"
+    />
+
+    <ion-button
+      slot="start"
+      *ngIf="actionOption?.btnleft"
+      (click)="routeToPage(actionOption.buttonLeft.link)"
+    >
+      <img
+        class="left-button-img"
+        alt="voya-back"
+        src="assets/icon/left_chevron_voya_black.svg"
+      />
+    </ion-button>
+    <ion-title
+      *ngIf="!actionOption.displayLogo"
+      [ngClass]="actionOption.btnleft ? 'left-button-visible' : ''"
+      >{{ actionOption.headername }}</ion-title
+    >
+    <ion-button
+      slot="end"
+      *ngIf="actionOption?.btnright"
+      (click)="routeToPage(actionOption.buttonRight.link)"
+    >
+      <img
+        class="right-button-img"
+        alt="voya-back"
+        src="assets/icon/notifications_outline.svg"
+      />
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
