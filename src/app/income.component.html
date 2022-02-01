@@ -1,0 +1,116 @@
+<div>
+  <ion-progress-bar class="progress-bar" value=".15"> </ion-progress-bar>
+  <ion-card class="fw-card">
+    <ion-card-header>
+      <ion-card-title class="label">
+        <p>TITLE</p>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="fw-card-content">
+      <img
+        class="fw-income-header-image"
+        alt="Income"
+        src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1500w,f_auto,q_auto:best/newscms/2019_06/2746941/190208-stock-money-fanned-out-ew-317p.jpg"
+      />
+      <form
+        [formGroup]="incomeForm"
+        (ngSubmit)="submitFWAssessmentForm()"
+        novalidate
+      >
+        <div class="fw-field-header">
+          {{ content.landingPage.incomeQuestionEmployment }}
+        </div>
+        <ion-select
+          class="fw-income-field-input"
+          [ngClass]="
+            this.formSubmitted && incomeForm.controls['employment'].invalid
+              ? 'invalid'
+              : ''
+          "
+          [interfaceOptions]="customActionSheetOptions"
+          interface="action-sheet"
+          placeholder="Select"
+          id="employment"
+          formControlName="employment"
+        >
+          <ion-select-option
+            class="text-black"
+            *ngFor="let item of content.landingPage.incomeOptions"
+            value="{{ item }}"
+          >
+            {{ item }}
+          </ion-select-option>
+        </ion-select>
+        <div class="fw-field-header">
+          {{ content.landingPage.incomeQuestionSpouse }}
+        </div>
+        <ion-select
+          class="fw-income-field-input"
+          [ngClass]="
+            this.formSubmitted &&
+            incomeForm.controls['spouseEmployment'].invalid
+              ? 'invalid'
+              : ''
+          "
+          [interfaceOptions]="customActionSheetOptions"
+          interface="action-sheet"
+          placeholder="Select"
+          id="spouseEmployment"
+          formControlName="spouseEmployment"
+        >
+          <ion-select-option
+            class="text-black"
+            *ngFor="let item of content.landingPage.incomeOptions"
+            value="{{ item }}"
+          >
+            {{ item }}
+          </ion-select-option>
+        </ion-select>
+        <div class="fw-field-header">
+          {{ content.landingPage.incomeQuestionIncome }}
+        </div>
+        <ion-input
+          maxlength="11"
+          type="tel"
+          decimal="."
+          thousand=","
+          placeholder="150,000.00"
+          currencyMask
+          class="fw-income-field-input"
+          [ngClass]="
+            this.formSubmitted && incomeForm.controls['householdIncome'].invalid
+              ? 'invalid'
+              : ''
+          "
+          id="householdIncome"
+          formControlName="householdIncome"
+          ><span class="dollar-symbol">$</span>
+        </ion-input>
+        <div class="income-asterisk">
+          {{ content.landingPage.incomeAsterisktext }}
+        </div>
+        <div
+          id="fw-form-submit-error-income"
+          class="fw-form-submit-error"
+          [ngClass]="this.formSubmitted && incomeForm.invalid ? 'show' : 'hide'"
+        >
+          {{ commonContent.landingPage.formErrorText }}
+        </div>
+        <ion-button
+          id="submitButton"
+          type="submit"
+          class="fw-continue-button"
+          shape="round"
+          color="btncolor"
+        >
+          {{ commonContent.landingPage.continueButton }}
+        </ion-button>
+      </form>
+      <div class="fw-back-link-container">
+        <a class="fw-back-link" routerLink="/financial-wellness/personalinfo">{{
+          commonContent.landingPage.backLink
+        }}</a>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</div>
